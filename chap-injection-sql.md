@@ -13,6 +13,12 @@ CREATE TABLE users (
 INSERT INTO users (username, password) 
 VALUES ('admin', '$2y$10$CwTycUXWue0Thq9StjUM0uJ8B3.q/jwEBaP6Luy8l3jCUPwQHWOiG');
 
+
+```
+
+Le Hack :
+
+```php
 $sql = "SELECT id, username FROM Users WHERE name = 'admin';--' AND password = ";
 ```
 
