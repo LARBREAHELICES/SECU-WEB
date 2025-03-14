@@ -2,7 +2,7 @@
 
 ```sql
 
-use db_secu;
+use db_todolist;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
