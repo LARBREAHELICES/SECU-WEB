@@ -108,27 +108,21 @@ $conn = new PDO("mysql:host=localhost;dbname=users_db", "root", "");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Récupération des informations du formulaire
-$username = $_POST['username'];
-$password = $_POST['password'];
+//  $username = $_POST['username'];
+//  $password = $_POST['password'];
 
-// Requête préparée sécurisée avec PDO
-$query = "SELECT * FROM users WHERE username = :username AND password = :password";
-$stmt = $conn->prepare($query);
+$username ="' OR 1=1 ; -- " ;
+$password = "123";
 
-// Lier les paramètres
-$stmt->bindParam(':username', $username, PDO::PARAM_STR);
-$stmt->bindParam(':password', $password, PDO::PARAM_STR);
+$stmt = $pdo->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
+$stmt->execute([$username, $password]);
 
-// Exécuter la requête
-$stmt->execute();
 
-// Vérification du résultat
-if ($stmt->rowCount() > 0) {
+if ($stmt->rowCount() >0 ) {
     echo "Connexion réussie";
 } else {
     echo "Identifiants incorrects";
 }
-?>
 ```
 
 ### **🔒 Avantages des requêtes préparées** :
